@@ -73,7 +73,7 @@ const Analysis1 = () => {
         </div>
         <div className="flex flex-col items-end gap-y-4 w-fit">
           {IconList.map((item, idx) => (
-            <div className="flex items-center w-full gap-x-2 mr-4">
+            <div className="flex items-center w-full gap-x-2 mr-4" key={idx}>
               <div className="w-auto">
                 <Image src={item.icon} alt="icon" height={64} width={64} />
               </div>

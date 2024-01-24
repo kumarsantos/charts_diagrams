@@ -70,11 +70,11 @@ const Analysis2 = () => {
       </div>
       <div className="mt-4">
         {data.map((item, idx) => (
-          <div className="flex items-center">
+          <div className="flex items-center" key={idx}>
             <div className="max-w-[50%]">
               <PieChart data={item.chartData} />
             </div>
-            <div className='ml-8'>
+            <div className="ml-8">
               <h2 className="font-bold text-orange-400 uppercase">
                 {item.heading}
               </h2>
