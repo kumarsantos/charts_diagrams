@@ -52,6 +52,7 @@ const AboutPage = () => {
           className="flex-shrink-0 min-w-[100%] min-h-[100%]"
           src={BackgroundImg}
           alt="background-image"
+          priority
         />
       </div>
       <h1 className="mt-[2rem] w-full bg-orange-500 max-w-[50%] font-bold uppercase text-2xl pl-12 py-2">
@@ -103,7 +104,7 @@ const AboutPage = () => {
                 {[1, 2, 3, 4, 5].map((box, i) => (
                   <span
                     key={i}
-                    className={`h-[24px] w-[24px] ${
+                    className={`h-[24px] w-[24px]  ${
                       i < item.score ? item.color : "bg-gray-400"
                     }`}
                   ></span>

@@ -1,6 +1,6 @@
 "use client";
 import { AgChartsReact } from "ag-charts-react";
-import React, { useState } from "react";
+import React from "react";
 
 const RadarChart = ({ data }) => {
   const options = {

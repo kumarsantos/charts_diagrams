@@ -68,12 +68,12 @@ const Analysis1 = () => {
         </p>
       </div>
       <div className="flex items-center my-8 justify-between">
-        <div className="max-w-[50%] h-[90%]">
+        <div className="max-w-[50%] ml-4">
           <RadarChart data={RadarChartData} />
         </div>
-        <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col items-end gap-y-4 w-fit">
           {IconList.map((item, idx) => (
-            <div className="flex items-center w-full gap-x-2">
+            <div className="flex items-center w-full gap-x-2 mr-4">
               <div className="w-auto">
                 <Image src={item.icon} alt="icon" height={64} width={64} />
               </div>
