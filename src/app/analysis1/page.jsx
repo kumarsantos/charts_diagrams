@@ -1,10 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Icon1 from "../../assets/icons/Icon.png";
-import Icon2 from "../../assets/icons/Icon (2).png";
-import Icon3 from "../../assets/icons/Icon (3).png";
-import Icon4 from "../../assets/icons/Icon (4).png";
+
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -14,137 +11,50 @@ import {
   ArcElement,
   Tooltip,
 } from "chart.js";
-import { Radar } from "react-chartjs-2";
-import { AgChartsReact } from "ag-charts-react";
-import "ag-charts-enterprise";
+
+import RadarChart from "../../components/RadarChart";
+import PieChart from "../../components/PieChart";
+import { IconList } from "../../utils/constant";
 
 ChartJS.register(ArcElement, Tooltip);
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
-function getData() {
-  return [
-    { category: "Market Analysis", value: 30 },
-    { category: "Strategic Vision", value: 20 },
-    { category: "Product Planning", value: 10 },
-    { category: "Business Finance", value: 20 },
-    { category: `GoTo Market`, value: 20 },
-  ].map((item) => ({
-    ...item,
-    category: `${item.category} ${item.value}%`,
-  }));
-}
+const pieChartData = [
+  { category: "Market Analysis", value: 30 },
+  { category: "Strategic Vision", value: 20 },
+  { category: "Product Planning", value: 10 },
+  { category: "Business Finance", value: 20 },
+  { category: `GoTo Market`, value: 20 },
+].map((item) => ({
+  ...item,
+  category: `${item.category} ${item.value}%`,
+}));
 
-const ChartExample = () => {
-  const [options, setOptions] = useState({
-    data: getData(),
-    series: [
-      {
-        type: "pie",
-        angleKey: "value",
-        calloutLabelKey: "category",
-        showInLegend: false,
-        // fills:['red','blue'],
-        sectorLabel: {
-          color: "white",
-          fontWeight: "bold",
-          // formatter: ({ value }) => `$${(value / 1000).toFixed(0)}K`,
-        },
-      },
-    ],
-  });
-
-  return <AgChartsReact options={options} />;
-};
-
-function getRadarChartData() {
-  return [
-    {
-      department: "Business Finance",
-      quality: 3,
-      efficiency: 75,
-    },
-    {
-      department: "GoTo Market",
-      quality: 3,
-      efficiency: 90,
-    },
-    {
-      department: "Market Analysis",
-      quality: 3,
-      efficiency: 60,
-    },
-    {
-      department: "Strategic Vision",
-      quality: 4,
-      efficiency: 60,
-    },
-    {
-      department: "Product Planning",
-      quality: 4.5,
-      efficiency: 50,
-    },
-  ];
-}
-
-const RadarChart = () => {
-  const [options, setOptions] = useState({
-    data: getRadarChartData(),
-    series: [
-      {
-        fill: "#F9A20A",
-        type: "radar-area",
-        angleKey: "department",
-        radiusKey: "quality",
-        radiusName: "Quality",
-      },
-    ],
-  });
-
-  return <AgChartsReact options={options} />;
-};
-
-const gaugeChartData = {
-  labels: [
-    "Market Analysis",
-    "Strategic Vision",
-    "Product Planning",
-    "Business Finance",
-    "GoTo Market",
-  ],
-  datasets: [
-    {
-      data: [5, 5, 5, 4, 5],
-      backgroundColor: "#FFA500",
-      borderColor: "green",
-      borderWidth: 2,
-    },
-  ],
-};
-
-const IconList = [
+const RadarChartData = [
   {
-    icon: Icon1,
-    obtail_score: 20,
-    total: 30,
-    description: "overall score",
+    department: "Business Finance",
+    value: 3,
+    efficiency: 75,
   },
   {
-    icon: Icon2,
-    obtail_score: 25,
-    total: 30,
-    description: "time taken (min)",
+    department: "GoTo Market",
+    value: 3,
+    efficiency: 90,
   },
   {
-    icon: Icon3,
-    obtail_score: 25,
-    total: 30,
-    description: "questions attempted",
+    department: "Market Analysis",
+    value: 3,
+    efficiency: 60,
   },
   {
-    icon: Icon4,
-    obtail_score: 20,
-    total: 30,
-    description: "correct answers",
+    department: "Strategic Vision",
+    value: 4,
+    efficiency: 60,
+  },
+  {
+    department: "Product Planning",
+    value: 4.5,
+    efficiency: 50,
   },
 ];
 
@@ -159,7 +69,7 @@ const Analysis1 = () => {
       </div>
       <div className="flex items-center my-8 justify-between">
         <div className="max-w-[50%] h-[90%]">
-          <RadarChart />
+          <RadarChart data={RadarChartData} />
         </div>
         <div className="flex flex-col gap-y-4">
           {IconList.map((item, idx) => (
@@ -186,7 +96,7 @@ const Analysis1 = () => {
         Skill distribution in the assessment
       </h1>
       <div className="w-full h-[350px] mt-10  flex items-center justify-center">
-        <ChartExample />
+        <PieChart data={pieChartData} />
       </div>
     </div>
   );
